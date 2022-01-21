@@ -13,7 +13,11 @@ export class DdLog implements Log {
   // That's why we need fabric
   constructor(inputString: string) {
     try {
-      const [timestamp, level, json] = inputString.split(' - ', 3); //todo: regexp
+      const testReg = /.{24} - (debug|info|warn|error) - {.*}/g;
+      if (!testReg.test(inputString)) {
+        throw 'wrong input string';
+      }
+      const [timestamp, level, json] = inputString.split(' - ', 3);
       this.timestamp = Date.parse(timestamp);
       if (isNaN(this.timestamp)) {
         throw 'wrong timestamp';
