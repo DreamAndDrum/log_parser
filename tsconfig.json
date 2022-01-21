@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "sourceMap": false,
+    "declaration": false,
+    "target": "es5",
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "lib": [
+      "ESNext"
+    ],
+    "outDir": "./dist"
+  },
+  "exclude": [
+    "node_modules",
+    "tests",
+    "*.test.ts"
+  ]
+}

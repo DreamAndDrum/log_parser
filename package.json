@@ -1,0 +1,81 @@
+{
+  "name": "log_parser",
+  "version": "1.0.0",
+  "description": "Parser for logs of given format",
+  "main": "./src/bin/index.ts",
+  "scripts": {
+    "build": "tsc --project tsconfig.json",
+    "test": "jest",
+    "format:code": "prettier --write \"{src,bin}/**/*.{ts,js,?css}\"",
+    "ct": "git-cz",
+    "lint": "eslint . --ext .ts"
+  },
+  "author": "Nikita Kharitonov",
+  "license": "ISC",
+  "bin": {
+    "parser": "./dist/bin/index.js"
+  },
+  "dependencies": {
+    "winston": "^3.4.0",
+    "yargs": "^17.3.1"
+  },
+  "devDependencies": {
+    "@commitlint/config-conventional": "^16.0.0",
+    "@types/jest": "^27.4.0",
+    "@typescript-eslint/eslint-plugin": "^5.10.0",
+    "@typescript-eslint/parser": "^5.10.0",
+    "commitizen": "^4.2.4",
+    "commitlint": "^16.1.0",
+    "eslint": "^8.7.0",
+    "husky": "^7.0.4",
+    "jest": "^27.4.7",
+    "lint-staged": "^12.2.2",
+    "prettier": "^2.5.1",
+    "ts-jest": "^27.1.3",
+    "typescript": "^4.5.5"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(tsx?)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ],
+    "testEnvironment": "node"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ],
+    "rules": {
+      "header-max-length": [
+        2,
+        "always",
+        80
+      ]
+    }
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "{src,bin}/**/*.{ts,js,?css}": [
+      "prettier --write",
+      "yarn lint",
+      "git add"
+    ]
+  }
+}
