@@ -1,3 +1,4 @@
+import { logger } from '../logger/logger';
 import { Log, LogParams, OutputLog } from './log_interface';
 
 const errorLevel = 'error';
@@ -12,8 +13,7 @@ export class DdLog implements Log {
   // That's why we need fabric
   constructor(inputString: string) {
     try {
-      const regexp = /.+ - .+ - .+/g;
-      const [timestamp, level, json] = inputString.split(regexp);
+      const [timestamp, level, json] = inputString.split(' - ', 3); //todo: regexp
       this.timestamp = Date.parse(timestamp);
       if (isNaN(this.timestamp)) {
         throw 'wrong timestamp';

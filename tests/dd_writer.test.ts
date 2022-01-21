@@ -1,6 +1,5 @@
 import { DdWriter } from '../src/writer/dd_writer';
-import { Log, OutputLog } from '../src/log/log_interface';
-import { LogMock } from './log.mock';
+import { Log } from '../src/log/log_interface';
 
 const fs = require('fs');
 jest.mock('fs');
