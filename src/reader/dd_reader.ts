@@ -10,7 +10,7 @@ export class DdReader implements Reader {
 
   read(path: string): Log[] {
     const inputFile: string = fs.readFileSync(path, 'utf8');
-    // assuming that logs fields have new string as "\n", otherwise need more complex parsing
+    // assuming that logs fields have new string as "\n", otherwise need more complex parsing, which is not required by the task
     const logStrings = inputFile.split('\n');
     const res: Log[] = [];
     logStrings.forEach((val) => {
