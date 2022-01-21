@@ -1,4 +1,4 @@
-import { Log, OutputLog } from '../src/log/log_interface';
+import { Log } from '../src/log/log_interface';
 
 export class LogMock implements Log {
   timestamp: 0;
@@ -15,11 +15,7 @@ export class LogMock implements Log {
   isErrorLog(): boolean {
     return true;
   }
-  getOutputLog(): OutputLog {
-    return {
-      timestamp: 0,
-      level: '',
-      transactionId: '',
-    };
+  getOutputLog(): string {
+    return "";
   }
 }

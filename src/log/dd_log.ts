@@ -1,5 +1,5 @@
 import { logger } from '../logger/logger';
-import { Log, LogParams, OutputLog } from './log_interface';
+import { Log, LogParams } from './log_interface';
 
 const errorLevel = 'error';
 
@@ -26,7 +26,7 @@ export class DdLog implements Log {
   }
 
   isValid(): boolean {
-    return this.valide;
+    return this.valide && 'transactionId' in this.params && 'details' in this.params;
   }
 
   isErrorLog(): boolean {
@@ -36,7 +36,7 @@ export class DdLog implements Log {
     return false;
   }
 
-  getOutputLog(): OutputLog {
+  getOutputLog(): any {
     return {
       timestamp: this.timestamp,
       level: this.level,

@@ -4,19 +4,9 @@ export interface Log {
   params: LogParams;
   isValid(): boolean;
   isErrorLog(): boolean;
-  getOutputLog(): OutputLog;
+  getOutputLog(): any;
 }
 
 export interface LogParams {
-  transactionId: string;
-  details: string;
-  err?: string;
   [index: string]: string;
-}
-
-export interface OutputLog {
-  timestamp: number;
-  level: string;
-  transactionId: string;
-  err?: string;
 }
