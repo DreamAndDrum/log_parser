@@ -5,6 +5,6 @@ Parser for logs.
 Call: 
 
 ```
-npm install -g .
+npm install
 node ./dist/bin/index.js -i "example.txt" -o "output.txt"
 ```
