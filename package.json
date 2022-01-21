@@ -70,7 +70,7 @@
   "lint-staged": {
     "{src,bin}/**/*.{ts,js,?css}": [
       "prettier --write",
-      "yarn lint",
+      "npm run lint",
       "git add"
     ]
   }

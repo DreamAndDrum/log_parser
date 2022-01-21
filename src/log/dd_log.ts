@@ -12,16 +12,14 @@ export class DdLog implements Log {
   // That's why we need fabric
   constructor(inputString: string) {
     try {
-      let hyphen = inputString.indexOf(' - ');
-      this.timestamp = Date.parse(inputString.substring(0, hyphen));
+      const regexp = /.+ - .+ - .+/g;
+      const [timestamp, level, json] = inputString.split(regexp);
+      this.timestamp = Date.parse(timestamp);
       if (isNaN(this.timestamp)) {
         throw 'wrong timestamp';
       }
-      inputString = inputString.substring(hyphen + 3);
-      hyphen = inputString.indexOf(' - ');
-      this.level = inputString.substring(0, hyphen);
-      inputString = inputString.substring(hyphen + 3);
-      this.params = JSON.parse(inputString);
+      this.level = level;
+      this.params = JSON.parse(json);
     } catch {
       this.valide = false;
     }
